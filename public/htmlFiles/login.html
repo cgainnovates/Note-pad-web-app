@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Log in</title>
+  <link rel="stylesheet" href="../cssFiles/login.css">
+</head>
+<body>
+  <main>
+    <div>
+      <a href="/"><img src="../img/back-arrow.svg" alt="back-arrow"></a>
+      <h2>Welcome back</h2>
+    </div>
+    
+    <section class="form">
+      <form action="/loginDetails" method="post">
+        
+        <div>
+          <label for="user-email">Email: </label>
+          <br>
+          <input type="email" name="user-email" id="email" required>
+          <span class="error-msg" id="email-error"></span>
+        </div>
+        
+        <div>
+          <label for="user-password">Password: </label>
+          <br>
+          <input type="password" name="user-password" id="password" required>
+          <span class="error-msg" id="password-error"></span>
+        </div>
+        
+        <button type="submit">Login</button>
+      </form>
+      <p class="signUpOption">Do not have an account? <a href="/login">Sign up</a></p>
+    </section>
+    
+  </main>
+  <script src="../scriptFiles/login.js"></script>
+</body>
+</html>

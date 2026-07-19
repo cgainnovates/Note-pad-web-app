@@ -5,6 +5,8 @@ const express = require("express");
 const port = process.env.PORT || 3000;
 const app  = express();
 app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) =>{
   res.sendFile(path.join(__dirname,'public', 'htmlFiles', 'index.html'));
@@ -15,6 +17,12 @@ app.get('/login', (req, res) =>{
 app.get('/signUp', (req, res) =>{
   res.sendFile(path.join(__dirname, 'public', 'htmlFiles', 'signUp.html'));
 });
+app.post('/signUpDetails', (req, res) =>{
+  console.log(req.body);
+})
+app.post('/loginDetails', (req, res) =>{
+  console.log(req.body);
+})
 app.listen(port, () =>{
   console.log(`App is now running at: http://localhost:${port}`)
 });

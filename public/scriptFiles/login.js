@@ -3,10 +3,8 @@ document.addEventListener('DOMContentLoaded', () =>{
   const form = document.querySelector('form');
   const emailInput = document.getElementById('email');
   const passwordInput = document.getElementById('password');
-  const confirmInput = document.getElementById('password-confirm');
   const emailError = document.getElementById('email-error');
   const passwordError = document.getElementById('password-error');
-  const confirmError = document.getElementById('password-confirm-error');
   
   function setError(el, msg){
     el.textContent = msg;
@@ -40,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () =>{
       setError(passwordError, 'Password should be more than 6 characters!');
       return false;
     };
-    if(!/[a-zA-Z]/.test(value){
+    if(!/[a-zA-Z]/.test(value)){
       setError(passwordError, "Password should include alphabets!");
       return false;
     };
@@ -52,33 +50,13 @@ document.addEventListener('DOMContentLoaded', () =>{
     return true;
   }
   
-  function validateConfirm(){
-    value = confirmInput.value;
-    if(!value){
-      setError(confirmError, "Please confirm your password!");
-      return false;
-    }
-    if(value !== passwordInput.value){
-      setError(confirmError, "Passwords do not match!");
-      return false;
-    }
-    clearError(confirmError);
-    return true;
-  }
   emailInput.addEventListener('blur', validateEmail);
   passwordInput.addEventListener('blur', validatePassword);
-  confirmInput.addEventListener('blur', validateConfirm);
   
-  passwordInput.addEventListener('input', () =>{
-    if (confirmInput.value){
-      validatePassword();
-    };
-  });
   form.addEventListener('submit', (e) =>{
     const isEmailValid = validateEmail();
     const isPasswordValid = validatePassword();
-    const isConfirmValid = validateConfirm();
-    if(!isEmailValid || !isPasswordValid || !isConfirmValid){
+    if(!isEmailValid || !isPasswordValid){
       e.preventDefault();
     };
   });
