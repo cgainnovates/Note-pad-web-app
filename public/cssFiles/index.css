@@ -101,3 +101,12 @@ a, .login-btn:focus-within a {
 .textDetails{
   text-align: center;
 }
+a{
+  text-decoration: none;
+    /* Removes the translucent blue background on tap (Android/iOS) */
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    
+    /* Removes the blue outline border when focused or clicked */
+    outline: none !important;
+}
