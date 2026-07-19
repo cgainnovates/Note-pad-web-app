@@ -1,0 +1,27 @@
+<svg width="220" height="56" viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Notely logo">
+  <!-- Notebook -->
+  <g>
+    <rect x="4" y="10" width="30" height="36" rx="4"
+          fill="none" stroke="#4A6FA5" stroke-width="2.5"/>
+    <!-- folded corner -->
+    <path d="M 26 10 L 34 10 L 34 18 Z" fill="#4A6FA5"/>
+    <!-- lines on notebook -->
+    <line x1="10" y1="24" x2="24" y2="24" stroke="#4A6FA5" stroke-width="2" stroke-linecap="round"/>
+    <line x1="10" y1="31" x2="24" y2="31" stroke="#4A6FA5" stroke-width="2" stroke-linecap="round"/>
+    <line x1="10" y1="38" x2="20" y2="38" stroke="#4A6FA5" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Pencil, crossing diagonally over the notebook -->
+  <g transform="rotate(45 19 28)">
+    <rect x="15.5" y="4" width="7" height="30" rx="2" fill="#4A6FA5"/>
+    <path d="M 15.5 4 L 22.5 4 L 19 -4 Z" fill="#4A6FA5"/>
+    <rect x="15.5" y="30" width="7" height="6" rx="1.5" fill="#EEF2F8" stroke="#4A6FA5" stroke-width="1"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="46" y="37"
+        font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+        font-size="28"
+        font-weight="600"
+        fill="#4A6FA5">Notely</text>
+</svg>
