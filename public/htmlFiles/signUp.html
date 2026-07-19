@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sign in</title>
+  <link rel="stylesheet" href="../cssFiles/signUp.css">
+</head>
+<body>
+  <main>
+    <div>
+      <a href="/"><img src="../img/back-arrow.svg" alt="back-arrow"></a>
+      <h2>Create your account</h2>
+    </div>
+    
+    <section class="form">
+      <form action="/signUpDetails" method="post">
+        
+        <div>
+          <label for="user-email">Email: </label>
+          <br>
+          <input type="email" name="user-email" id="email" required>
+          <span class="error-msg" id="email-error"></span>
+        </div>
+        
+        <div>
+          <label for="user-password">Password: </label>
+          <br>
+          <input type="password" name="user-password" id="password" required>
+          <span class="error-msg" id="password-error"></span>
+        </div>
+        
+        <div>
+          <label for="user-password-confirm">Confirm Password: </label>
+          <br>
+          <input type="password" name="user-password-confirm" id="password-confirm" required>
+          <span class="error-msg" id="password-confirm-error"></span>
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p class="loginOption">Already have an account? <a href="/login">Login</a></p>
+    </section>
+    
+  </main>
+  <script src="../scriptFiles/signUp.js"></script>
+</body>
+</html>
