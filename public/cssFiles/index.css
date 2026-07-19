@@ -28,12 +28,14 @@ main{
   width: 90%;
   gap: 10em;
 }
-
+ul{
+  width: 100%;
+}
 li{
   list-style-type: none;
   text-align: center;
   border-radius: .5em;
-  width: 100%;
+  overflow: hidden; /* This keeps the sharp borders of <a> inside the rounded corners of <li> */
 }
 h1{
   font-weight: bold;
@@ -47,41 +49,55 @@ img{
   margin: 1em;
   width: 130px;
 }
-.signUp-btn a{
+
+/* --- ADJUSTED LINK STYLES --- */
+.signUp-btn a, .login-btn a {
   text-decoration: none;
-  color: var(--background);
+  display: block; /* Makes the anchor tag take up the full button area */
   width: 100%;
-}
-.login-btn a{
-  text-decoration : none;
-  color: var(--black);
-  width: 100%;
+  padding: 1em;   /* The padding is now on the link, making the whole area clickable */
 }
 
+.signUp-btn a {
+  color: var(--background);
+}
+.login-btn a {
+  color: var(--black);
+}
+
+/* --- ADJUSTED BUTTON CONTAINERS --- */
 .signUp-btn{
   background-color: var(--primary-color);
   color: var(--background);
-  padding: 1em;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.13); 
   margin: 1em;
   width: 80vw;
+  /* padding: 1em; <-- REMOVED */
 }
 .login-btn{
   background-color: var(--background);
   color: var(--black);
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.13); 
-  padding: 1em;
   margin: 1em;
   width: 80vw;
+  /* padding: 1em; <-- REMOVED */
 }
-.signUp-btn :hover, :focus{
+
+/* --- CLEANED HOVER EFFECTS --- */
+.signUp-btn:focus-within {
   background-color: var(--background);
+}
+a, .signUp-btn:focus-within a {
   color: var(--black);
 }
-.login-btn :hover, :focus{
+
+.login-btn:focus-within {
   background-color: var(--primary-color);
+}
+a, .login-btn:focus-within a {
   color: var(--background);
 }
+
 .textDetails{
   text-align: center;
 }
