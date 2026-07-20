@@ -31,10 +31,10 @@ app.post('/signUpDetails', async (req, res) =>{
   const password = req.body['user-password'];
   try{
     if(!email || !password){
-      res.status(400).send("Email and Password are required!")
+      return res.status(400).send("Email and Password are required!")
     };
     if (findUserByEmail(email)){
-      res.status(409).send("An account already exists with this email")
+      return res.status(409).send("An account already exists with this email");
     }
     const passwordHash = hashPassword(password);
     addUser({email, passwordHash});
@@ -42,7 +42,7 @@ app.post('/signUpDetails', async (req, res) =>{
     res.redirect('/')
   } catch(err){
     console.error(err);
-    res.status(500).send("Something went wrong while creating the account!")
+    return res.status(500).send("Something went wrong while creating the account!")
   }
 })
 app.post('/loginDetails', async (req, res) =>{
@@ -51,26 +51,26 @@ app.post('/loginDetails', async (req, res) =>{
   
   try{
     if (!email || !password){
-      res.status(400).send("Email and Password are required to login!");
+      return res.status(400).send("Email and Password are required to login!");
     }
     user = findUserByEmail(email)
     if(!user){
-      res.status(401).send("Invalid email or password!");
+      return res.status(401).send("Invalid email or password!");
     };
     const match = verifyPassword(password, user.passwordHash);
     if(!match){
-      res.status(401).send("Invalid email or password!");
+      return res.status(401).send("Invalid email or password!");
     }
     req.session.userEmail = email;
     res.redirect('/')
     } catch(err){
       console.error(err);
-      res.status(500).send("Something went wrong while logging in!")
+      return res.status(500).send("Something went wrong while logging in!")
     }
   })
 app.post('/logout', (req, res) =>{
   req.session.destroy(() =>{
-    res.redirect('/login')
+    return res.redirect('/login')
   });
 });
 app.listen(port, () =>{

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   }
   
   function validateEmail(){
-    value = emailInput.value.trim();
+    const value = emailInput.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!value){
       setError(emailError, "Enter your email!");
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     return true;
   };
   function validatePassword(){
-    value = passwordInput.value;
+    const value = passwordInput.value;
     if (!value){
       setError(passwordError, "Password is required!");
       return false;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   }
   
   function validateConfirm(){
-    value = confirmInput.value;
+    const value = confirmInput.value;
     if(!value){
       setError(confirmError, "Please confirm your password!");
       return false;
@@ -74,12 +74,41 @@ document.addEventListener('DOMContentLoaded', () =>{
       validatePassword();
     };
   });
-  form.addEventListener('submit', (e) =>{
+  form.addEventListener('submit', async (e) =>{
+    e.preventDefault()
     const isEmailValid = validateEmail();
     const isPasswordValid = validatePassword();
     const isConfirmValid = validateConfirm();
     if(!isEmailValid || !isPasswordValid || !isConfirmValid){
-      e.preventDefault();
+      return;
     };
+    try{
+      const res = await fetch('/signUpDetails', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          'user-email':emailInput.value.trim(),
+          'user-password': passwordInput.value
+          
+        })
+      })
+      if(res.status === 409){
+        alert("An account already exists with this email!");
+        window.location.href = '/login';
+        return;
+      }
+      if(!res.ok){
+        const msg = await res.text();
+        alert(msg);
+        return;
+      }
+      window.location.href = '/';
+    }catch(err){
+      console.error(err);
+      alert("Something went wrong, please try again!");
+    }
+      
   });
+    
+  
 });
