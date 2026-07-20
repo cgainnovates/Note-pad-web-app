@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () =>{
       setError(passwordError, 'Password should be more than 6 characters!');
       return false;
     };
-    if(!/[a-zA-Z]/.test(value){
+    if(!/[a-zA-Z]/.test(value)){
       setError(passwordError, "Password should include alphabets!");
       return false;
     };
