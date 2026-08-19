@@ -62,7 +62,7 @@ app.post('/loginDetails', async (req, res) =>{
       return res.status(401).send("Invalid email or password!");
     }
     req.session.userEmail = email;
-    res.redirect('/')
+    res.redirect('/login')
     } catch(err){
       console.error(err);
       return res.status(500).send("Something went wrong while logging in!")
